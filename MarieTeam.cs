@@ -65,27 +65,26 @@ namespace client_marieteam
             var options = new XPdfFontOptions(PdfFontEncoding.Unicode);
             var font = new XFont("Arial", 15, XFontStyle.Regular, options);
 
-            foreach (var pagePDF in ParsingPage(editorText))
+            foreach (var pagePDF in ParsingPage())
             {
                 var page = document.AddPage();
                 var gfx = XGraphics.FromPdfPage(page);
                 var tf = new XTextFormatter(gfx);
                 tf.Alignment = XParagraphAlignment.Center;
-
                 tf.DrawString(pagePDF, font, XBrushes.Black, new XRect(100, 100, page.Width - 200, 600), XStringFormats.TopLeft);
             }
             document.Save(output);
             Process.Start(output);
         }
-        public static List<string> ParsingPage(string responseEditor)
+        public List<string> ParsingPage()
         {
             string varParser = "#NEWPAGE";
             List<string> listParsed = new List<string>();
-            while (responseEditor.Contains(varParser))
+            while (editorText.Contains(varParser))
             {
-                int stopIndex = responseEditor.IndexOf(varParser);
-                listParsed.Add(responseEditor.Substring(0, stopIndex));
-                responseEditor = responseEditor.Substring(stopIndex + varParser.Length);
+                int stopIndex = editorText.IndexOf(varParser);
+                listParsed.Add(editorText.Substring(0, stopIndex));
+                editorText = editorText.Substring(stopIndex + varParser.Length);
             }
             return listParsed;
         }

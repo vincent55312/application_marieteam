@@ -32,10 +32,10 @@ namespace client_marieteam
         {
             if (TextboxSortie.Text.Length != 0)
             {
-                string editor = maintextbox.Text;
+                string textEditor = maintextbox.Text;
                 string output = TextboxSortie.Text;
 
-                PDF myPdf = new PDF(output, editor);
+                PDF myPdf = new PDF(output, textEditor);
                 myPdf.Generate();
             }
             else
