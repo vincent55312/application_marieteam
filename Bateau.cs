@@ -25,7 +25,6 @@ namespace client_marieteam
     {
         string pathimage { get; set; }
         float vitesse { get; set; }
-
         public BateauVoyageur(int id, string nom, float longueur, float largeur, string pathimage, float vitesse):base(id, nom, longueur, largeur)
         {
             this.pathimage = pathimage;
