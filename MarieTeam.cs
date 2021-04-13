@@ -36,8 +36,6 @@ namespace client_marieteam
     {
         string pathimage { get; set; }
         float vitesse { get; set; }
-        MySqlConnection client { get; set; }
-
         List<string> equipements { get; set; } = new List<string>();
         public BateauVoyageur(int id, string nom, float longueur, float largeur, string pathimage, float vitesse) : base(id, nom, longueur, largeur)
         {
