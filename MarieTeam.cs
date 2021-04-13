@@ -77,17 +77,17 @@ namespace client_marieteam
             document.Save(output);
             Process.Start(output);
         }
-        public static List<string> ParsingPage(string res)
+        public static List<string> ParsingPage(string responseEditor)
         {
-            string parser = "#NEWPAGE";
-            List<string> listparsed = new List<string>();
-            while (res.Contains(parser))
+            string varParser = "#NEWPAGE";
+            List<string> listParsed = new List<string>();
+            while (responseEditor.Contains(varParser))
             {
-                int idx = res.IndexOf(parser);
-                listparsed.Add(res.Substring(0, idx));
-                res = res.Substring(idx + parser.Length);
+                int stopIndex = responseEditor.IndexOf(varParser);
+                listParsed.Add(responseEditor.Substring(0, stopIndex));
+                responseEditor = responseEditor.Substring(stopIndex + varParser.Length);
             }
-            return listparsed;
+            return listParsed;
         }
     }
 }
