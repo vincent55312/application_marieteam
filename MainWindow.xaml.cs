@@ -68,55 +68,34 @@ namespace client_marieteam
             if (client.OpenConnection())
             {
                 var sql = "SELECT * FROM bateau";
-
                 var cmd = new MySqlCommand(sql, client.Client);
-
                 MySqlDataReader rdr = cmd.ExecuteReader();
-                JeuEnregistrement Bateaux = new JeuEnregistrement();
+                Passerelle Bateaux = new Passerelle();
 
                 while (rdr.Read())
                 {
                     Bateaux.bateauVoyageurs.Add(new BateauVoyageur(rdr.GetInt32(0), rdr.GetString(1), rdr.GetFloat(2), rdr.GetFloat(3), rdr.GetString(4), rdr.GetFloat(5)));
                 }
                 client.CloseConnection();
-
-                foreach (var item in Bateaux.bateauVoyageurs)
-                {
-                    maintextbox.Text += item.ToString()+ "\n#NEWPAGE";
-                }
+                foreach (var item in Bateaux.bateauVoyageurs) maintextbox.Text += item.ToString()+ "\n#NEWPAGE";
             }
         }
         private void GenererPDF(object sender, RoutedEventArgs e)
         {
             if (TextboxSortie.Text.Length != 0)
             {
-                List<string> pdfs = Parser.Parsing(maintextbox.Text);
+                string editor = maintextbox.Text;
                 string output = TextboxSortie.Text;
-                var document = new PdfDocument();
-                var options = new XPdfFontOptions(PdfFontEncoding.Unicode);
 
-                var font = new XFont("Times New Roman", 15, XFontStyle.Regular, options);
-
-                foreach (var text in pdfs)
-                {
-                    var page = document.AddPage();
-                    var gfx = XGraphics.FromPdfPage(page);
-                    var tf = new XTextFormatter(gfx);
-                    tf.Alignment = XParagraphAlignment.Center;
-
-                    tf.DrawString(text, font, XBrushes.Black, new XRect(100, 100, page.Width - 200, 600), XStringFormats.TopLeft);
-                }
-
-                document.Save(output);
-                Process.Start(output);
+                PDF myPdf = new PDF(output, editor);
+                myPdf.Generate();
             }
             else
             {
                 MessageBox.Show("Veuillez saisir un repertoire de sortie");
             }
-
         }
-    
+
         private void ResetEditeur(object sender, RoutedEventArgs e)
         {
             maintextbox.Text = "";
