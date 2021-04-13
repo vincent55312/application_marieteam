@@ -23,6 +23,7 @@ namespace client_marieteam
         public MainWindow()
         {
             InitializeComponent();
+            maincanvas.Visibility = Visibility.Hidden;
 
         }
 
@@ -37,6 +38,31 @@ namespace client_marieteam
             else
             {
                 LabelConnection.Content = "Connection à la base de donnée serveur a échouée";
+            }
+        }
+
+        private void Collectdatas_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void sortie_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new Microsoft.Win32.SaveFileDialog();
+            dialog.InitialDirectory = TextboxSortie.Text;
+            dialog.Title = "Select a Directory"; 
+            dialog.Filter = "Directory|*.this.directory"; 
+            dialog.FileName = "select";
+            if (dialog.ShowDialog() == true)
+            {
+                string path = dialog.FileName;
+                path = path.Replace("\\select.this.directory", "");
+                path = path.Replace(".this.directory", "");
+                if (!System.IO.Directory.Exists(path))
+                {
+                    System.IO.Directory.CreateDirectory(path);
+                }
+                TextboxSortie.Text = path;
             }
         }
     }
