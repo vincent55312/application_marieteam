@@ -1,0 +1,22 @@
+﻿<Window x:Name="MarieTeam_client" x:Class="client_marieteam.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:client_marieteam"
+        mc:Ignorable="d"
+        Title="MarieTeam V0.0.1" Height="450" Width="800">
+    <Grid Background="#FFACD6EA">
+        <Canvas x:Name="startcanvas" d:IsHidden="True">
+            <Label x:Name="LabelBienvenue" Content="Bienvenue sur votre client Marieteam" Canvas.Left="85" Canvas.Top="26" Height="59" Width="655" FontSize="30" FontFamily="Arial Black"/>
+            <Rectangle Height="99" Stroke="Black" Width="800" Fill="#FFF3FF00" Opacity="0.2" StrokeThickness="11"/>
+            <Button x:Name="Button_connection" Content="Me connecter" Canvas.Left="267" Canvas.Top="217" Height="77" Width="266" FontSize="15" FontWeight="Bold" Background="White" Click="Button_connection_Click"/>
+            <Label x:Name="LabelConnection" Content="" Canvas.Left="232" Canvas.Top="142" Height="55" Width="336" FontSize="15"/>
+        </Canvas>
+        <Canvas x:Name="maincanvas" Visibility="Hidden">
+            <Label x:Name="LabelMain" Content="Générateur de PDF pour MarieTeam" Canvas.Left="85" Canvas.Top="26" Height="59" Width="655" FontSize="30" FontFamily="Arial Black"/>
+            <Rectangle Height="99" Stroke="Black" Width="800" Fill="#FF2A9900" Opacity="0.2" StrokeThickness="11"/>
+        </Canvas>
+
+    </Grid>
+</Window>
