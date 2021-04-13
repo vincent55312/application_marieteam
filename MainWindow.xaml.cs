@@ -60,10 +60,7 @@ namespace client_marieteam
                 string path = dialog.FileName;
                 path = path.Replace("\\select.this.directory", "");
                 path = path.Replace(".this.directory", "");
-                if (!System.IO.Directory.Exists(path))
-                {
-                    System.IO.Directory.CreateDirectory(path);
-                }
+                if (!System.IO.Directory.Exists(path)) System.IO.Directory.CreateDirectory(path);
                 TextboxSortie.Text = path + "\\MarieTeam.pdf";
             }
         }
@@ -83,7 +80,7 @@ namespace client_marieteam
                     Bateaux.bateauVoyageurs.Add(new BateauVoyageur(rdr.GetInt32(0), rdr.GetString(1), rdr.GetFloat(2), rdr.GetFloat(3), rdr.GetString(4), rdr.GetFloat(5)));
                 }
                 client.CloseConnection();
-                foreach (var item in Bateaux.bateauVoyageurs) maintextbox.Text += item.ToString() + "\n#NEWPAGE";
+                foreach (var item in Bateaux.bateauVoyageurs) maintextbox.Text += item.ToString() + "#NEWPAGE\n";
             }
         }
     }

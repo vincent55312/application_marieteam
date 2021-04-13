@@ -8,14 +8,15 @@ using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 using System.Diagnostics;
 using PdfSharp.Drawing.Layout;
+using System.Windows;
 
 
 namespace client_marieteam
 {
     class Bateau
     {
-        int id { get; set; }
-        string nom { get; set; }
+        public int id { get; set; }
+        public string nom { get; set; }
         float longueur { get; set; }
         float largeur { get; set; }
         public Bateau(int id, string nom, float longueur, float largeur)
@@ -35,17 +36,42 @@ namespace client_marieteam
     {
         string pathimage { get; set; }
         float vitesse { get; set; }
+        MySqlConnection client { get; set; }
+
+        List<string> equipements { get; set; } = new List<string>();
         public BateauVoyageur(int id, string nom, float longueur, float largeur, string pathimage, float vitesse) : base(id, nom, longueur, largeur)
         {
             this.pathimage = pathimage;
             this.vitesse = vitesse;
+            getEquipments();
         }
         public override string ToString()
         {
-            return $"\r[IMAGE] {pathimage}\n{base.ToString()}\nVitesse : {vitesse} noeuds\n\n";
+            string equipments = $"\nListe des équipements du bateau {base.nom} : \n ";
+            foreach (var item in equipements) equipments += "- " + item + "\n";
+            return $"\r[IMAGE] {pathimage}\n{base.ToString()}\nVitesse : {vitesse} noeuds\n {equipments} \n\n";
+        }
+
+        public void getEquipments()
+        {   // bdd (Accès Handicapé.Bar.Pont promenade.Baby foot.Dansoir.) => List<string> {Accès Handicapé, Bar, Pont promenade, Baby foot, Dansoir}
+            ClientSQL client = new ClientSQL();
+            if (client.OpenConnection())
+            {
+                var sql = $"SELECT equipements FROM bateau WHERE id_bateau = {base.id}";
+                var cmd = new MySqlCommand(sql, client.Client);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                string tmp = "";
+                while (rdr.Read()) tmp = rdr.GetString(0);
+                client.CloseConnection();
+                while (tmp.Contains("."))
+                {
+                    int stopIndex = tmp.IndexOf(".");
+                    equipements.Add(tmp.Substring(0, stopIndex));
+                    tmp = tmp.Substring(stopIndex + 1);
+                }
+            }
         }
     }
-
     class Passerelle
     {
         public List<BateauVoyageur> bateauVoyageurs { get; set; } = new List<BateauVoyageur>();
