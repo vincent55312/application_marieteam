@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace client_marieteam
 {
@@ -19,6 +20,10 @@ namespace client_marieteam
             this.longueur = longueur;
             this.largeur = largeur;
         }
+        public override string ToString()
+        {
+            return $"\rNom du bateau : {nom} \nLongueur : {longueur} mètres \nLargeur : {largeur} mètres";
+        }
     }
 
     class BateauVoyageur : Bateau
@@ -30,5 +35,14 @@ namespace client_marieteam
             this.pathimage = pathimage;
             this.vitesse = vitesse;
         }
+        public override string ToString()
+        {
+            return $"\r[IMAGE] {pathimage}\n{base.ToString()}\nVitesse : {vitesse} noeuds\n\n";
+        }
+    }
+
+    class JeuEnregistrement
+    {
+        public List<BateauVoyageur> bateauVoyageurs { get; set; } = new List<BateauVoyageur>();
     }
 }

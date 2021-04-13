@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using System.Windows;
 
 namespace client_marieteam
 {
@@ -7,23 +8,8 @@ namespace client_marieteam
         public ClientSQL()
         {
             Client = getClient();
-            clientIsConnected();
         }
         public MySqlConnection Client { get; set; }
-        public bool isConnected { get; set; }
-
-        public void clientIsConnected()
-        {
-            try
-            {
-                Client.Open();
-                isConnected = true;
-            }
-            catch
-            {
-                isConnected = false;
-            }
-        }
         public MySqlConnection getClient()
         {
             // Login admins SQL
@@ -36,21 +22,39 @@ namespace client_marieteam
             string connectionString = "datasource=" + dataSource + ";port=" + port + ";username=" + username + ";password=" + password + ";database=" + dataBase + ";";
             return new MySqlConnection(connectionString);
         }
-
-        public MySqlCommand setQuery(string query, MySqlConnection client)
+        public bool OpenConnection()
         {
-            MySqlCommand commandDatabase = new MySqlCommand(query, client);
-            commandDatabase.CommandTimeout = 60;
-            return commandDatabase;
+            try
+            {
+                Client.Open();
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                switch (ex.Number)
+                {
+                    case 0:
+                        MessageBox.Show("Login/password du serveur sont erronés, veuillez contacter un administrateur", "Code erreur : " + ex.Number.ToString());
+                        break;
+                    case 1042:
+                        MessageBox.Show("Serveur SQL non connecté", "Code erreur : " + ex.Number.ToString());
+                        break;
+                }
+                return false;
+            }
         }
-
-        public MySqlDataReader Reader(string query)
+        public bool CloseConnection()
         {
-            MySqlConnection connection = getClient();
-            connection.Open();
-            MySqlDataReader reader = setQuery(query, connection).ExecuteReader();
-            connection.Close();
-            return reader;
+            try
+            {
+                Client.Close();
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Code erreur : " + ex.Number.ToString());
+                return false;
+            }
         }
     }
 }

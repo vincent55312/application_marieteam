@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MySql.Data.MySqlClient;
 
 namespace client_marieteam
 {
@@ -30,14 +31,10 @@ namespace client_marieteam
         private void Button_connection_Click(object sender, RoutedEventArgs e)
         {
             ClientSQL client = new ClientSQL();
-            if (client.isConnected)
+            if (client.OpenConnection())
             {
                 startcanvas.Visibility = Visibility.Hidden;
                 maincanvas.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                LabelConnection.Content = "Connection à la base de donnée serveur a échouée";
             }
         }
 
@@ -60,7 +57,30 @@ namespace client_marieteam
                 TextboxSortie.Text = path;
             }
         }
+        private void CollectEditeur(object sender, RoutedEventArgs e)
+        {
+            ClientSQL client = new ClientSQL();
+            if (client.OpenConnection())
+            {
+                var sql = "SELECT * FROM bateau";
 
+                using var cmd = new MySqlCommand(sql, client.Client);
+
+                using MySqlDataReader rdr = cmd.ExecuteReader();
+                JeuEnregistrement Bateaux = new JeuEnregistrement();
+
+                while (rdr.Read())
+                {
+                    Bateaux.bateauVoyageurs.Add(new BateauVoyageur(rdr.GetInt32(0), rdr.GetString(1), rdr.GetFloat(2), rdr.GetFloat(3), rdr.GetString(4), rdr.GetFloat(5)));
+                }
+                client.CloseConnection();
+
+                foreach (var item in Bateaux.bateauVoyageurs)
+                {
+                    maintextbox.Text += item.ToString();
+                }
+            }
+        }
         private void GenererPDF(object sender, RoutedEventArgs e)
         {
 
@@ -68,12 +88,9 @@ namespace client_marieteam
 
         private void ResetEditeur(object sender, RoutedEventArgs e)
         {
-
+            maintextbox.Text = "";
         }
 
-        private void CollectEditeur(object sender, RoutedEventArgs e)
-        {
-             
-        }
+
     }
 }
