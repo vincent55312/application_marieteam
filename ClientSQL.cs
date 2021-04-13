@@ -26,6 +26,7 @@ namespace client_marieteam
         }
         public MySqlConnection getClient()
         {
+            // Login admins SQL
             string dataSource = "127.0.0.1";
             string port = "3306";
             string username = "root";
