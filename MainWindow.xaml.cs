@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using PdfSharp.Pdf;
+using PdfSharp.Drawing;
+using System.Diagnostics;
 
 namespace client_marieteam
 {
@@ -54,7 +57,7 @@ namespace client_marieteam
                 {
                     System.IO.Directory.CreateDirectory(path);
                 }
-                TextboxSortie.Text = path;
+                TextboxSortie.Text = path + "\\MarieTeam.pdf";
             }
         }
         private void CollectEditeur(object sender, RoutedEventArgs e)
@@ -64,9 +67,9 @@ namespace client_marieteam
             {
                 var sql = "SELECT * FROM bateau";
 
-                using var cmd = new MySqlCommand(sql, client.Client);
+                var cmd = new MySqlCommand(sql, client.Client);
 
-                using MySqlDataReader rdr = cmd.ExecuteReader();
+                MySqlDataReader rdr = cmd.ExecuteReader();
                 JeuEnregistrement Bateaux = new JeuEnregistrement();
 
                 while (rdr.Read())
@@ -83,6 +86,27 @@ namespace client_marieteam
         }
         private void GenererPDF(object sender, RoutedEventArgs e)
         {
+            if(TextboxSortie.Text.Length != 0)
+            {
+                string datasPDF = maintextbox.Text.ToString();
+                string pathoutput = TextboxSortie.Text.ToString();
+
+                PdfDocument document = new PdfDocument();
+                PdfPage page = document.AddPage();
+                XGraphics gfx = XGraphics.FromPdfPage(page);
+                XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
+
+                gfx.DrawString(datasPDF, font, XBrushes.Black,
+                  new XRect(0, 0, page.Width, page.Height),
+                  XStringFormat.Center);
+
+                document.Save(pathoutput);
+                Process.Start(pathoutput);
+            }
+            else
+            {
+                MessageBox.Show("Veuillez saisir une sortie de document");
+            }
 
         }
 
