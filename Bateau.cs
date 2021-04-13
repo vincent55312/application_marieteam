@@ -37,7 +37,7 @@ namespace client_marieteam
         }
         public override string ToString()
         {
-            return $"\r[IMAGE] {pathimage}\n{base.ToString()}\nVitesse : {vitesse} noeuds\n\n";
+            return $"\r[IMAGE] {pathimage}\n{base.ToString()}\nVitesse : {vitesse} noeuds\n\n#NEWPAGE\n";
         }
     }
 

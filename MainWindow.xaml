@@ -16,7 +16,7 @@
             <Label x:Name="LabelMain" Content="Générateur de PDF pour MarieTeam" Canvas.Left="85" Canvas.Top="26" Height="59" Width="655" FontSize="30" FontFamily="Arial Black"/>
             <Rectangle x:Name="MainLabel" Height="99" Stroke="Black" Width="800" Fill="#FF2172FF" Opacity="0.2" StrokeThickness="3
                        " RadiusX="50"/>
-            <TextBox x:Name="maintextbox" Canvas.Left="10" Canvas.Top="104" TextWrapping="Wrap" Width="602" Height="320" Background="White" BorderBrush="#FFF7F7F7" Foreground="Black" Cursor="AppStarting" AcceptsTab="True" IsUndoEnabled="False" BorderThickness="15,1,1,1" AcceptsReturn="True" AutomationProperties.IsColumnHeader="True" TextAlignment="Center" FontFamily="Arial" FontSize="14"/>
+            <TextBox x:Name="maintextbox" Canvas.Left="10" Canvas.Top="104" TextWrapping="Wrap" Width="602" Height="320" Background="White" BorderBrush="#FFF7F7F7" Foreground="Black" AcceptsTab="True" IsUndoEnabled="False" BorderThickness="15,1,1,1" AcceptsReturn="True" AutomationProperties.IsColumnHeader="True" TextAlignment="Center" FontFamily="Arial" FontSize="14"/>
             <Button x:Name="Collecterdatas" Content="Collecter dans l'editeur" Canvas.Left="630" Canvas.Top="118" Height="44" Width="143" Background="#FFA8E89E" Click="CollectEditeur"/>
             <Button x:Name="Supprimerdatas" Content="Reset l'editeur" Canvas.Left="630" Canvas.Top="167" Height="44" Width="143" Background="#FFE8A19E" Click="ResetEditeur"/>
             <TextBox x:Name="TextboxSortie" Canvas.Left="630" Canvas.Top="264" TextWrapping="Wrap" Width="143" Background="{x:Null}" Height="48" FontFamily="Bahnschrift Light"/>

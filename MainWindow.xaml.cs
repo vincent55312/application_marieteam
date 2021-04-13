@@ -16,6 +16,8 @@ using MySql.Data.MySqlClient;
 using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 using System.Diagnostics;
+using PdfSharp.Drawing.Layout;
+
 
 namespace client_marieteam
 {
@@ -80,41 +82,44 @@ namespace client_marieteam
 
                 foreach (var item in Bateaux.bateauVoyageurs)
                 {
-                    maintextbox.Text += item.ToString();
+                    maintextbox.Text += item.ToString()+ "\n";
                 }
             }
         }
         private void GenererPDF(object sender, RoutedEventArgs e)
         {
-            if(TextboxSortie.Text.Length != 0)
+            if (TextboxSortie.Text.Length != 0)
             {
-                string datasPDF = maintextbox.Text.ToString();
-                string pathoutput = TextboxSortie.Text.ToString();
+                List<string> pdfs = Parser.Parsing(maintextbox.Text);
+                string output = TextboxSortie.Text;
+                var document = new PdfDocument();
+                var options = new XPdfFontOptions(PdfFontEncoding.Unicode);
 
-                PdfDocument document = new PdfDocument();
-                PdfPage page = document.AddPage();
-                XGraphics gfx = XGraphics.FromPdfPage(page);
-                XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
+                var font = new XFont("Times New Roman", 15, XFontStyle.Regular, options);
 
-                gfx.DrawString(datasPDF, font, XBrushes.Black,
-                  new XRect(0, 0, page.Width, page.Height),
-                  XStringFormat.Center);
+                foreach (var text in pdfs)
+                {
+                    var page = document.AddPage();
+                    var gfx = XGraphics.FromPdfPage(page);
+                    var tf = new XTextFormatter(gfx);
+                    tf.Alignment = XParagraphAlignment.Center;
 
-                document.Save(pathoutput);
-                Process.Start(pathoutput);
+                    tf.DrawString(text, font, XBrushes.Black, new XRect(100, 100, page.Width - 200, 600), XStringFormats.TopLeft);
+                }
+
+                document.Save(output);
+                Process.Start(output);
             }
             else
             {
-                MessageBox.Show("Veuillez saisir une sortie de document");
+                MessageBox.Show("Veuillez saisir un repertoire de sortie");
             }
 
         }
-
+    
         private void ResetEditeur(object sender, RoutedEventArgs e)
         {
             maintextbox.Text = "";
         }
-
-
     }
 }
