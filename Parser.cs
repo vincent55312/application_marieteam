@@ -10,7 +10,6 @@ namespace client_marieteam
     {
         public static List<string> Parsing(string res)
         {
-            string tmp = res;
             string parser = "#NEWPAGE";
             List<string> listparsed = new List<string>();
             while (res.Contains(parser))

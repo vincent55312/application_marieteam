@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net4.7.2</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
     <UseWPF>true</UseWPF>
+    <StartupObject>client_marieteam.App</StartupObject>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <Version>0.0.1</Version>
   </PropertyGroup>
 	<ItemGroup>
 	<PackageReference Include="MySql.Data" Version="8.0.23" />

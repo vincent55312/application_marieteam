@@ -82,7 +82,7 @@ namespace client_marieteam
 
                 foreach (var item in Bateaux.bateauVoyageurs)
                 {
-                    maintextbox.Text += item.ToString()+ "\n";
+                    maintextbox.Text += item.ToString()+ "\n#NEWPAGE";
                 }
             }
         }
