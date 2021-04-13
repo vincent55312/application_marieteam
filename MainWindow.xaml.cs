@@ -41,11 +41,6 @@ namespace client_marieteam
             }
         }
 
-        private void Collectdatas_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void sortie_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new Microsoft.Win32.SaveFileDialog();
@@ -64,6 +59,21 @@ namespace client_marieteam
                 }
                 TextboxSortie.Text = path;
             }
+        }
+
+        private void GenererPDF(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ResetEditeur(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CollectEditeur(object sender, RoutedEventArgs e)
+        {
+             
         }
     }
 }
