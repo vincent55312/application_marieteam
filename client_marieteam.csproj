@@ -11,4 +11,7 @@
 		<PackageReference Include="MySql.Data" Version="8.0.23" />
 		<PackageReference Include="PdfSharp" Version="1.50.5147" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="images\" />
+	</ItemGroup>
 </Project>

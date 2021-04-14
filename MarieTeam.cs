@@ -9,7 +9,9 @@ using PdfSharp.Drawing;
 using System.Diagnostics;
 using PdfSharp.Drawing.Layout;
 using System.Windows;
-
+using System.Drawing;
+using System.IO;
+using System.Net;
 
 namespace client_marieteam
 {
@@ -37,10 +39,14 @@ namespace client_marieteam
         string pathimage { get; set; }
         float vitesse { get; set; }
         List<string> equipements { get; set; } = new List<string>();
-        public BateauVoyageur(int id, string nom, float longueur, float largeur, string pathimage, float vitesse) : base(id, nom, longueur, largeur)
+        public BateauVoyageur(int id, string nom, float longueur, float largeur, string urlimage, float vitesse) : base(id, nom, longueur, largeur)
         {
-            this.pathimage = pathimage;
             this.vitesse = vitesse;
+            pathimage = $"C:/Users/33756/Desktop/client_marieteam/images/{id}.jpg";
+            using (WebClient client = new WebClient())
+            {
+                client.DownloadFile(new Uri(urlimage), pathimage);
+            }
             getEquipments();
         }
         public override string ToString()
@@ -69,6 +75,7 @@ namespace client_marieteam
                 }
             }
         }
+
     }
     class Passerelle
     {
@@ -93,12 +100,19 @@ namespace client_marieteam
             {
                 var page = document.AddPage();
                 var gfx = XGraphics.FromPdfPage(page);
+
+
                 var tf = new XTextFormatter(gfx);
                 tf.Alignment = XParagraphAlignment.Center;
                 tf.DrawString(pagePDF, font, XBrushes.Black, new XRect(100, 100, page.Width - 200, 600), XStringFormats.TopLeft);
             }
             document.Save(output);
             Process.Start(output);
+        }
+        void DrawImage(XGraphics gfx, string jpegSamplePath, int x, int y, int width, int height)
+        {
+            XImage image = XImage.FromFile(jpegSamplePath);
+            gfx.DrawImage(image, x, y, width, height);
         }
         public List<string> ParsingPage()
         {
