@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 using System.Diagnostics;
 using PdfSharp.Drawing.Layout;
 using System.Windows;
-using System.Drawing;
-using System.IO;
 using System.Net;
 
 namespace client_marieteam
@@ -54,6 +50,7 @@ namespace client_marieteam
 
             getEquipments();
         }
+
         public override string ToString()
         {
             string equipments = $"\nListe des équipements du bateau {base.nom} : \n ";
@@ -81,6 +78,7 @@ namespace client_marieteam
             }
         }
     }
+
     class Passerelle
     {
         public List<BateauVoyageur> bateauVoyageurs { get; set; } = new List<BateauVoyageur>();
@@ -145,7 +143,6 @@ namespace client_marieteam
         {
             string varParserStart = "[";
             string varParserEnd = "]";
-
             List<string> listParsed = new List<string>();
             while (text.Contains(varParserStart))
             {
@@ -158,13 +155,13 @@ namespace client_marieteam
         }
         public string ParsingDeleteImage(string text)
         {
-            char varParserStart = '[';
-            char varParserEnd = ']';
+            string varParserStart = "[";
+            string varParserEnd = "]";
             while (text.Contains(varParserEnd))
             {
                 int startIndex = text.IndexOf(varParserStart);
                 int endIndex = text.IndexOf(varParserEnd);
-                text = text.Remove(startIndex, endIndex - startIndex +1);
+                text = text.Remove(startIndex, endIndex - startIndex + varParserEnd.Length);
             }
             return text;
         }
