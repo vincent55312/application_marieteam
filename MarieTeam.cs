@@ -8,6 +8,7 @@ using System.Diagnostics;
 using PdfSharp.Drawing.Layout;
 using System.Windows;
 using System.Net;
+using System.IO;
 
 namespace client_marieteam
 {
@@ -38,7 +39,7 @@ namespace client_marieteam
         public BateauVoyageur(int id, string nom, float longueur, float largeur, string urlimage, float vitesse) : base(id, nom, longueur, largeur)
         {
             this.vitesse = vitesse;
-            pathimage = $"C:/Users/33756/Desktop/client_marieteam/images/{id}.jpg";
+            pathimage = $"{Directory.GetCurrentDirectory()}/{id}.jpg";
             try
             {
                 using (WebClient client = new WebClient())
