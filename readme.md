@@ -3,15 +3,15 @@
 ## MySql.Data 8.0.23
 * Generator PDF with simple Editor
 
-![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/imagegithub/2.PNG)
+![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/2.PNG)
 
-![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/imagegithub/1.PNG)
+![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/1.PNG)
 
-![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/imagegithub/3.PNG)
+![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/3.PNG)
 
-![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/imagegithub/5.PNG)
+![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/5.PNG)
 
-![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/imagegithub/4.PNG)
+![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/4.PNG)
 
 ## Features :
 * Error handling
