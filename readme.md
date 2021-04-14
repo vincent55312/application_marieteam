@@ -8,7 +8,7 @@
 * Design style WPF
 * One page by boat
 * Image handler
-*
+
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/2.PNG)
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/1.PNG)
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/3.PNG)
