@@ -36,24 +36,29 @@ namespace client_marieteam
 
     class BateauVoyageur : Bateau
     {
-        string pathimage { get; set; }
+        public string pathimage { get; set; }
         float vitesse { get; set; }
         List<string> equipements { get; set; } = new List<string>();
         public BateauVoyageur(int id, string nom, float longueur, float largeur, string urlimage, float vitesse) : base(id, nom, longueur, largeur)
         {
             this.vitesse = vitesse;
             pathimage = $"C:/Users/33756/Desktop/client_marieteam/images/{id}.jpg";
-            using (WebClient client = new WebClient())
+            try
             {
-                client.DownloadFile(new Uri(urlimage), pathimage);
-            }
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadFile(new Uri(urlimage), pathimage);
+                }
+            } 
+            catch {}
+
             getEquipments();
         }
         public override string ToString()
         {
             string equipments = $"\nListe des équipements du bateau {base.nom} : \n ";
             foreach (var item in equipements) equipments += "- " + item + "\n";
-            return $"\r[IMAGE] {pathimage}\n{base.ToString()}\nVitesse : {vitesse} noeuds\n {equipments} \n\n";
+            return $"[{pathimage}]\n{base.ToString()}\nVitesse : {vitesse} noeuds\n {equipments} \n\n";
         }
 
         public void getEquipments()
@@ -75,7 +80,6 @@ namespace client_marieteam
                 }
             }
         }
-
     }
     class Passerelle
     {
@@ -86,45 +90,84 @@ namespace client_marieteam
     {
         public string output { get; set; }
         public string editorText { get; set; }
-        public PDF(string output, string editorText){
+        public PDF(string output, string editorText)
+        {
             this.editorText = editorText;
             this.output = output;
         }
         public void Generate()
         {
-            var document = new PdfDocument();
-            var options = new XPdfFontOptions(PdfFontEncoding.Unicode);
-            var font = new XFont("Arial", 15, XFontStyle.Regular, options);
-
-            foreach (var pagePDF in ParsingPage())
+            try
             {
-                var page = document.AddPage();
-                var gfx = XGraphics.FromPdfPage(page);
-
-
-                var tf = new XTextFormatter(gfx);
-                tf.Alignment = XParagraphAlignment.Center;
-                tf.DrawString(pagePDF, font, XBrushes.Black, new XRect(100, 100, page.Width - 200, 600), XStringFormats.TopLeft);
+                var document = new PdfDocument();
+                var options = new XPdfFontOptions(PdfFontEncoding.Unicode);
+                var font = new XFont("Arial", 15, XFontStyle.Regular, options);
+                int i = 0;
+                string text = editorText;
+                List<string> images = ParsingImage(text);
+                editorText = ParsingDeleteImage(editorText);
+                foreach (var pagePDF in ParsingPage(editorText))
+                {
+                    var page = document.AddPage();
+                    var gfx = XGraphics.FromPdfPage(page);
+                    if (i < images.Count())
+                    {
+                        XImage image = XImage.FromFile(images[i]);
+                        gfx.DrawImage(image, 50, 50, 500, 250);
+                    }
+                    var tf = new XTextFormatter(gfx);
+                    tf.Alignment = XParagraphAlignment.Center;
+                    tf.DrawString(pagePDF, font, XBrushes.Black, new XRect(100, 350, page.Width - 200, 600), XStringFormats.TopLeft);
+                    i++;
+                }
+                document.Save(output);
+                Process.Start(output);
             }
-            document.Save(output);
-            Process.Start(output);
+            catch
+            {
+                MessageBox.Show("Erreur durant la génération du PDF");
+            }
         }
-        void DrawImage(XGraphics gfx, string jpegSamplePath, int x, int y, int width, int height)
-        {
-            XImage image = XImage.FromFile(jpegSamplePath);
-            gfx.DrawImage(image, x, y, width, height);
-        }
-        public List<string> ParsingPage()
+        public List<string> ParsingPage(string text)
         {
             string varParser = "#NEWPAGE";
             List<string> listParsed = new List<string>();
-            while (editorText.Contains(varParser))
+            while (text.Contains(varParser))
             {
-                int stopIndex = editorText.IndexOf(varParser);
-                listParsed.Add(editorText.Substring(0, stopIndex));
-                editorText = editorText.Substring(stopIndex + varParser.Length);
+                int stopIndex = text.IndexOf(varParser);
+                listParsed.Add(text.Substring(0, stopIndex));
+                text = text.Substring(stopIndex + varParser.Length);
             }
             return listParsed;
         }
+
+        public List<string> ParsingImage(string text)
+        {
+            string varParserStart = "[";
+            string varParserEnd = "]";
+
+            List<string> listParsed = new List<string>();
+            while (text.Contains(varParserStart))
+            {
+                int startIndex = text.IndexOf(varParserStart);
+                int endIndex = text.IndexOf(varParserEnd);
+                listParsed.Add(text.Substring(startIndex + varParserStart.Length, endIndex - startIndex - varParserEnd.Length));
+                text = text.Substring(endIndex + varParserEnd.Length);
+            }
+            return listParsed;
+        }
+        public string ParsingDeleteImage(string text)
+        {
+            char varParserStart = '[';
+            char varParserEnd = ']';
+            while (text.Contains(varParserEnd))
+            {
+                int startIndex = text.IndexOf(varParserStart);
+                int endIndex = text.IndexOf(varParserEnd);
+                text = text.Remove(startIndex, endIndex - startIndex +1);
+            }
+            return text;
+        }
+
     }
 }
