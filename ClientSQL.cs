@@ -34,7 +34,7 @@ namespace client_marieteam
                 switch (ex.Number)
                 {
                     case 0:
-                        MessageBox.Show("Login/password du serveur sont erronés, veuillez contacter un administrateur", "Code erreur : " + ex.Number.ToString());
+                        MessageBox.Show("Login/password  du serveur sont erronés, veuillez contacter un administrateur", "Code erreur : " + ex.Number.ToString());
                         break;
                     case 1042:
                         MessageBox.Show("Serveur SQL non connecté", "Code erreur : " + ex.Number.ToString());
