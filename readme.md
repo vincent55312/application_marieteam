@@ -13,13 +13,20 @@
 * Un bateau par page avec image
 * Tests unitaires
 
+## Application : 
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/2.PNG)
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/1.PNG)
+
+## Tests unitaires : 
+![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/successtests.PNG)
+![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/successtests2.PNG)
+
+## output PDF :
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/3.PNG)
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/4.PNG)
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/5.PNG)
-![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/successtests.PNG)
-![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/successtests2.PNG)
+
+
 
 
 
