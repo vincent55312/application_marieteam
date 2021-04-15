@@ -1,11 +1,11 @@
 # V0.0.1 Application MarieTeam 
-## .NET 4.7.2 WPF
-## PdfSharp 2.4.2
-## MySql.Data 8.0.23
+## * .NET 4.7.2 WPF
+## * PdfSharp 2.4.2
+## * MySql.Data 8.0.23
 
 * Generateur et editeur de PDF 
 
-## Features :
+# Features :
 * Gestion fine des erreurs
 * Design style WPF
 * Génération de PDF avec images
@@ -13,21 +13,21 @@
 * Un bateau par page avec image
 * Tests unitaires
 
-## Application : 
+# Application : 
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/2.PNG)
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/1.PNG)
 
-## Diagramme d'utilisation : 
+# Diagramme d'utilisation : 
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/diagramutility.PNG)
 
-## Diagramme de classe : 
+# Diagramme de classe : 
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/diagramclass.PNG)
 
-## Tests unitaires : 
+# Tests unitaires : 
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/successtests.PNG)
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/successtests2.PNG)
 
-## Sortie PDF :
+# Sortie PDF :
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/3.PNG)
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/4.PNG)
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/5.PNG)
