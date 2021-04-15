@@ -17,6 +17,9 @@
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/2.PNG)
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/1.PNG)
 
+## Diagramme de classe : 
+![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/diagramclass.PNG)
+
 ## Tests unitaires : 
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/successtests.PNG)
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/successtests2.PNG)
