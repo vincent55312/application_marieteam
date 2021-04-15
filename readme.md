@@ -1,11 +1,10 @@
-# V0.0.1 Application MarieTeam 
-## * .NET 4.7.2 WPF
-## * PdfSharp 2.4.2
-## * MySql.Data 8.0.23
-
-* Generateur et editeur de PDF 
+# V0.0.1 Application MarieTeam
+* ### .NET 4.7.2 WPF
+* ### PdfSharp 2.4.2
+* ### MySql.Data 8.0.23
 
 # Features :
+* Generateur et editeur de PDF 
 * Gestion fine des erreurs
 * Design style WPF
 * Génération de PDF avec images
