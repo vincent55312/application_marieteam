@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using MySql.Data.MySqlClient;
-using PdfSharp.Pdf;
-using PdfSharp.Drawing;
-using System.Diagnostics;
+﻿using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
-using System.Windows;
-using System.Net;
+using PdfSharp.Pdf;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Net;
+using System.Windows;
 
 namespace client_marieteam
 {
@@ -36,20 +35,16 @@ namespace client_marieteam
         public string pathimage { get; set; }
         float vitesse { get; set; }
         List<string> equipements { get; set; } = new List<string>();
-        public BateauVoyageur(int id, string nom, float longueur, float largeur, string urlimage, float vitesse) : base(id, nom, longueur, largeur)
+        public BateauVoyageur(int id, string nom, float longueur, float largeur, string urlimage, float vitesse, List<string> equipements) : base(id, nom, longueur, largeur)
         {
+            this.equipements = equipements;
             this.vitesse = vitesse;
             pathimage = $"{Directory.GetCurrentDirectory()}/{id}.jpg";
             try
             {
-                using (WebClient client = new WebClient())
-                {
-                    client.DownloadFile(new Uri(urlimage), pathimage);
-                }
+                new WebClient().DownloadFile(new Uri(urlimage), pathimage);
             } 
             catch {}
-
-            getEquipments();
         }
 
         public override string ToString()
@@ -59,30 +54,23 @@ namespace client_marieteam
             return $"[{pathimage}]\n{base.ToString()}\nVitesse : {vitesse} noeuds\n {equipments} \n\n";
         }
 
-        public void getEquipments()
-        {   // bdd (Accès Handicapé.Bar.Pont promenade.Baby foot.Dansoir.) => List<string> {Accès Handicapé, Bar, Pont promenade, Baby foot, Dansoir}
-            ClientSQL client = new ClientSQL();
-            if (client.OpenConnection())
-            {
-                var sql = $"SELECT equipements FROM bateau WHERE id_bateau = {base.id}";
-                var cmd = new MySqlCommand(sql, client.Client);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                string tmp = "";
-                while (rdr.Read()) tmp = rdr.GetString(0);
-                client.CloseConnection();
-                while (tmp.Contains("."))
-                {
-                    int stopIndex = tmp.IndexOf(".");
-                    equipements.Add(tmp.Substring(0, stopIndex));
-                    tmp = tmp.Substring(stopIndex + 1);
-                }
-            }
-        }
     }
 
     class Passerelle
     {
         public List<BateauVoyageur> bateauVoyageurs { get; set; } = new List<BateauVoyageur>();
+
+        public static List<string> chargerLesEquipements(string eq)
+        {
+            List<string> tmp = new List<string>();
+            while (eq.Contains("."))
+            {
+                int stopIndex = eq.IndexOf(".");
+                tmp.Add(eq.Substring(0, stopIndex));
+                eq = eq.Substring(stopIndex + 1);
+            }
+            return tmp;
+        }
     }
 
     class PDF
