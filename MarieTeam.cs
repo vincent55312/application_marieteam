@@ -115,6 +115,7 @@ namespace client_marieteam
                 MessageBox.Show("Erreur durant la génération du PDF");
             }
         }
+        // put string sentences into a list before each string varParser
         public List<string> ParsingPage(string text)
         {
             string varParser = "#NEWPAGE";
@@ -128,6 +129,7 @@ namespace client_marieteam
             return listParsed;
         }
 
+        // put string paths images into a list : between parserStart and parserEnd
         public List<string> ParsingImage(string text)
         {
             string varParserStart = "[";
@@ -142,6 +144,7 @@ namespace client_marieteam
             }
             return listParsed;
         }
+        // remove images paths from text
         public string ParsingDeleteImage(string text)
         {
             string varParserStart = "[";
@@ -154,6 +157,5 @@ namespace client_marieteam
             }
             return text;
         }
-
     }
 }
