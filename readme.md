@@ -29,7 +29,6 @@
 # Sortie PDF :
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/3.PNG)
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/4.PNG)
-![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/5.PNG)
 
 
 
