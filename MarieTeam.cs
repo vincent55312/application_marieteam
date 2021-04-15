@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace client_marieteam
 {
-    class Bateau
+    public class Bateau
     {
         public int id { get; set; }
         public string nom { get; set; }
@@ -30,7 +30,7 @@ namespace client_marieteam
         }
     }
 
-    class BateauVoyageur : Bateau
+    public class BateauVoyageur : Bateau
     {
         public string pathimage { get; set; }
         float vitesse { get; set; }
@@ -56,7 +56,7 @@ namespace client_marieteam
 
     }
 
-    class Passerelle
+    public class Passerelle
     {
         public List<BateauVoyageur> bateauVoyageurs { get; set; } = new List<BateauVoyageur>();
 
@@ -73,7 +73,7 @@ namespace client_marieteam
         }
     }
 
-    class PDF
+    public class PDF
     {
         public string output { get; set; }
         public string editorText { get; set; }
@@ -115,8 +115,11 @@ namespace client_marieteam
                 MessageBox.Show("Erreur durant la génération du PDF");
             }
         }
+
         // put string sentences into a list before each string varParser
-        public List<string> ParsingPage(string text)
+        // static for tests
+
+        public static List<string> ParsingPage(string text)
         {
             string varParser = "#NEWPAGE";
             List<string> listParsed = new List<string>();
@@ -130,7 +133,9 @@ namespace client_marieteam
         }
 
         // put string paths images into a list : between parserStart and parserEnd
-        public List<string> ParsingImage(string text)
+        // static for tests
+
+        public static List<string> ParsingImage(string text)
         {
             string varParserStart = "[";
             string varParserEnd = "]";
@@ -144,8 +149,11 @@ namespace client_marieteam
             }
             return listParsed;
         }
+
         // remove images paths from text
-        public string ParsingDeleteImage(string text)
+        // static for tests
+
+        public static string ParsingDeleteImage(string text)
         {
             string varParserStart = "[";
             string varParserEnd = "]";
@@ -153,9 +161,11 @@ namespace client_marieteam
             {
                 int startIndex = text.IndexOf(varParserStart);
                 int endIndex = text.IndexOf(varParserEnd);
-                text = text.Remove(startIndex, endIndex - startIndex + varParserEnd.Length);
+                if (startIndex >= 0) text = text.Remove(startIndex, endIndex - startIndex + varParserEnd.Length);
+                else break;
             }
             return text;
         }
     }
 }
+  
