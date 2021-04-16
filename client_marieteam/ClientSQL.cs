@@ -16,7 +16,7 @@ namespace client_marieteam
             string dataSource = "127.0.0.1";
             string port = "3306";
             string username = "root";
-            string password = " ";
+            string password = "";
             string dataBase = "marieteam";
 
             string connectionString = "datasource=" + dataSource + ";port=" + port + ";username=" + username + ";password=" + password + ";database=" + dataBase + ";";
