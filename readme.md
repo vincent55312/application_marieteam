@@ -11,7 +11,8 @@
 * Ajouts de bateaux et de pages via l'éditeur txt
 * Un bateau par page avec image
 * Tests unitaires
-
+# GitBook : 
+https://vincent-vuylsteker.gitbook.io/client-lourd-marieteam/
 # Application : 
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/2.PNG)
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/1.PNG)
