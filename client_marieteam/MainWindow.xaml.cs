@@ -2,6 +2,7 @@
 using System.Windows;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace client_marieteam
 {
@@ -13,7 +14,38 @@ namespace client_marieteam
         public MainWindow()
         {
             InitializeComponent();
+
+            if (!File.Exists(Licence.path))
+            {
+                licencecanvas.Visibility = Visibility.Visible;
+            }
+            else{
+                dynamic jsonFile = JsonConvert.DeserializeObject(File.ReadAllText(Licence.path));
+                string key = jsonFile["LICENCE"];
+                bool licenceExist = new Licence(key).Exist();
+                if (licenceExist)
+                {
+                    licencecanvas.Visibility = Visibility.Hidden;
+                }
+            }
+
             maincanvas.Visibility = Visibility.Hidden;
+        }
+        private void button_licence_Click(object sender, RoutedEventArgs e)
+        {
+            string inputLicence = tb_licence.Text;
+            if(new Licence(inputLicence).Exist())
+            {
+                string stringConfig = "{'LICENCE':'"+ inputLicence +"'}";
+                dynamic json = JsonConvert.DeserializeObject(stringConfig);
+                string jsonSerializedObj = JsonConvert.SerializeObject(json);
+                File.WriteAllText(Licence.path, jsonSerializedObj);
+                licencecanvas.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                MessageBox.Show("Licence non reconnue");
+            }
         }
         private void clickConnect(object sender, RoutedEventArgs e)
         {
@@ -78,5 +110,7 @@ namespace client_marieteam
                 foreach (var item in Bateaux.bateauVoyageurs) maintextbox.Text += item.ToString() + "#NEWPAGE\n";
             }
         }
+
+
     }
 }

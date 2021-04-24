@@ -22,6 +22,8 @@
 # Diagramme de classe : 
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/diagramclass.PNG)
 
+# Système de licence unique sécurisé : 
+![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/licence.PNG)
 # Tests unitaires : 
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/successtests.PNG)
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/successtests2.PNG)

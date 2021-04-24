@@ -22,5 +22,12 @@
             <Button x:Name="outputLabel" Content="Selectionner un dossier" Canvas.Left="630" Canvas.Top="232" Width="143" Background="#FFFFD386" Click="clickOutput" RenderTransformOrigin="0.501,1.302"/>
             <Button x:Name="generatePDF" Content="Generer le PDF" Canvas.Left="630" Canvas.Top="378" Height="46" Width="143" Background="#FFFFFBD2" FontWeight="Bold" Click="clickGeneratePDF"/>
         </Canvas>
+        <Canvas x:Name="licencecanvas">
+            <Rectangle Fill="#FF314368" Height="451" RadiusX="50" StrokeThickness="3" Width="794" Opacity="0.95"/>
+            <TextBox x:Name="tb_licence" Height="23" Canvas.Left="291" TextWrapping="Wrap" Canvas.Top="211" Width="208" FontSize="15"/>
+            <Label Content="Saisir licence :" Canvas.Left="199" Canvas.Top="208" FontWeight="Bold"/>
+            <Label Content="LICENCE SYSTEM" Canvas.Left="265" Canvas.Top="125" FontWeight="Bold" Height="47" Width="252" FontSize="30"/>
+            <Button x:Name="button_licence" Content="Valider" Canvas.Left="509" Canvas.Top="213" Width="75" Click="button_licence_Click"/>
+        </Canvas>
     </Grid>
 </Window>
