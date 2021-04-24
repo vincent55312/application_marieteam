@@ -6,13 +6,17 @@
 # Features :
 * Generateur et editeur de PDF 
 * Gestion fine des erreurs
+* Système de licences uniques ou par groupe 
+* Enregistrement de la licence dans le répertoire local de l'utilisateur
 * Design style WPF
 * Génération de PDF avec images
 * Ajouts de bateaux et de pages via l'éditeur txt
 * Un bateau par page avec image
 * Tests unitaires
+
 # GitBook : 
 https://vincent-vuylsteker.gitbook.io/client-lourd-marieteam/
+
 # Application : 
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/2.PNG)
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/1.PNG)
@@ -25,6 +29,7 @@ https://vincent-vuylsteker.gitbook.io/client-lourd-marieteam/
 
 # Système de licence unique sécurisé : 
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/licence.PNG)
+
 # Tests unitaires : 
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/successtests.PNG)
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/successtests2.PNG)
