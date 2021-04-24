@@ -22,11 +22,7 @@ namespace client_marieteam
             else{
                 dynamic jsonFile = JsonConvert.DeserializeObject(File.ReadAllText(Licence.path));
                 string key = jsonFile["LICENCE"];
-                bool licenceExist = new Licence(key).Exist();
-                if (licenceExist)
-                {
-                    licencecanvas.Visibility = Visibility.Hidden;
-                }
+                if (new Licence(key).isValid) licencecanvas.Visibility = Visibility.Hidden;
             }
 
             maincanvas.Visibility = Visibility.Hidden;
@@ -34,7 +30,8 @@ namespace client_marieteam
         private void button_licence_Click(object sender, RoutedEventArgs e)
         {
             string inputLicence = tb_licence.Text;
-            if(new Licence(inputLicence).Exist())
+            Licence licence = new Licence(inputLicence);
+            if(licence.isValid)
             {
                 string stringConfig = "{'LICENCE':'"+ inputLicence +"'}";
                 dynamic json = JsonConvert.DeserializeObject(stringConfig);
@@ -43,8 +40,8 @@ namespace client_marieteam
                 licencecanvas.Visibility = Visibility.Hidden;
             }
             else
-            {
-                MessageBox.Show("Licence non reconnue");
+            {   
+                if(licence.APIisWorking) MessageBox.Show("Licence non existante");
             }
         }
         private void clickConnect(object sender, RoutedEventArgs e)

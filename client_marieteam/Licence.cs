@@ -2,22 +2,54 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Windows;
+
 namespace client_marieteam
 {
     public class Licence
     {
+        public static readonly string path = $"{Directory.GetCurrentDirectory()}\\licence.json";
         string apiTest = "0";
         string apiAdress = "http://localhost:8080/api/";
-        string key { get; set; }
+        public bool isValid { get; set; }
+        public bool APIisWorking { get; set; }
+
         public Licence(string key)
         {
-            this.key = key; 
+            ApiWorking();
+            if (APIisWorking) Exist(key);
+            else MessageBox.Show("API de licence n'est pas en fonctionnement");
         }
-        public static readonly string path = $"{Directory.GetCurrentDirectory()}\\licence.json";
-
-        private bool ApiWorking()
+        private void Exist(string key)
         {
-            bool result;
+            try
+            {
+                Uri uri = new Uri(apiAdress + key);
+                WebRequest request = WebRequest.Create(uri);
+                WebResponse response = request.GetResponse();
+                StreamReader sr = null;
+                try
+                {
+                    sr = new StreamReader(response.GetResponseStream());
+                    isValid = bool.Parse(sr.ReadToEnd());
+                }
+                catch
+                {
+                    isValid = false;
+                }
+                finally
+                {
+                    if (sr != null) sr.Close();
+                }
+            }
+            catch
+            {
+                isValid = false;
+            }
+        }
+
+        private void ApiWorking()
+        {
             try
             {
                 Uri uri = new Uri(apiAdress + apiTest);
@@ -27,11 +59,11 @@ namespace client_marieteam
                 try
                 {
                     sr = new StreamReader(response.GetResponseStream());
-                    result = bool.Parse(sr.ReadToEnd());
+                    APIisWorking = bool.Parse(sr.ReadToEnd());
                 }
                 catch
                 {
-                    result = false;
+                    APIisWorking = false;
                 }
                 finally
                 {
@@ -40,43 +72,9 @@ namespace client_marieteam
             }
             catch
             {
-                result = false;
+                APIisWorking = false;
             }
-            return result;
         }
 
-        public bool Exist()
-        {
-            if (ApiWorking())
-            {
-                bool result;
-                try
-                {
-                    Uri uri = new Uri(apiAdress + key);
-                    WebRequest request = WebRequest.Create(uri);
-                    WebResponse response = request.GetResponse();
-                    StreamReader sr = null;
-                    try
-                    {
-                        sr = new StreamReader(response.GetResponseStream());
-                        result = bool.Parse(sr.ReadToEnd());
-                    }
-                    catch
-                    {
-                        result = false;
-                    }
-                    finally
-                    {
-                        if (sr != null) sr.Close();
-                    }
-                }
-                catch
-                {
-                    result = false;
-                }
-                return result;
-            }
-            else return false;
-        }
     }
 }
