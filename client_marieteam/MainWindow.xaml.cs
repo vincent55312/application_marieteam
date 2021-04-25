@@ -46,8 +46,7 @@ namespace client_marieteam
         }
         private void clickConnect(object sender, RoutedEventArgs e)
         {
-            ClientSQL client = new ClientSQL();
-            if (client.OpenConnection())
+            if (new ClientSQL().OpenConnection())
             {
                 startcanvas.Visibility = Visibility.Hidden;
                 maincanvas.Visibility = Visibility.Visible;

@@ -10,7 +10,7 @@ namespace client_marieteam
     {
         public static readonly string path = $"{Directory.GetCurrentDirectory()}\\licence.json";
         string apiTest = "0";
-        string apiAdress = "http://localhost:8080/api/";
+        string apiAdress = "http://93.113.207.251:8080/api/";
         public bool isValid { get; set; }
         public bool APIisWorking { get; set; }
 

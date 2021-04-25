@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="client_marieteam.ClientSQL">
+    <Position X="9.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAABAAAQAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>ClientSQL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="client_marieteam.App">
+    <Position X="11.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="client_marieteam.Licence">
+    <Position X="13.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAECAAAAAACAAAAAAAAABgAAAQAAAEAAAA=</HashCode>
+      <FileName>Licence.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="client_marieteam.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="0.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAgAAAAAAAAEAAAEAAAAMAAAAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="client_marieteam.Bateau">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAIAAAAAAAAACAAAAAAAAAAhA=</HashCode>
+      <FileName>MarieTeam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="client_marieteam.BateauVoyageur">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAEAAAAAAAAAAAAAAQAAAAAAAAEAAA=</HashCode>
+      <FileName>MarieTeam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="client_marieteam.Passerelle">
+    <Position X="11.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MarieTeam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="client_marieteam.PDF">
+    <Position X="11.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAACAAAAAgABAAAAEAAIAA=</HashCode>
+      <FileName>MarieTeam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

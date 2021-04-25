@@ -12,11 +12,11 @@ namespace client_marieteam
         public MySqlConnection Client { get; set; }
         public MySqlConnection getClient()
         {
-            // Login admins SQL
-            string dataSource = "127.0.0.1";
+            // Login admins SQ
+            string dataSource = "93.113.207.251";
             string port = "3306";
             string username = "root";
-            string password = "";
+            string password = "root";
             string dataBase = "marieteam";
 
             string connectionString = "datasource=" + dataSource + ";port=" + port + ";username=" + username + ";password=" + password + ";database=" + dataBase + ";";
