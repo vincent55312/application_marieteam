@@ -19,7 +19,7 @@ namespace client_marieteam
             {
                 licencecanvas.Visibility = Visibility.Visible;
             }
-            else{
+            else{ // auto connexion
                 dynamic jsonFile = JsonConvert.DeserializeObject(File.ReadAllText(Licence.path));
                 string key = jsonFile["LICENCE"];
                 if (new Licence(key).isValid) licencecanvas.Visibility = Visibility.Hidden;
