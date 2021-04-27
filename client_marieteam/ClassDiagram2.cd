@@ -1,57 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="client_marieteam.ClientSQL">
-    <Position X="9.5" Y="4.25" Width="1.5" />
+    <Position X="10.25" Y="4" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AEAAAAAAAAAAAAAAAAAAABAAAQAAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>ClientSQL.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="client_marieteam.App">
-    <Position X="11.5" Y="0.75" Width="1.5" />
+    <Position X="15.25" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>App.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="client_marieteam.Licence">
-    <Position X="13.5" Y="3.25" Width="1.5" />
+    <Position X="15.25" Y="1" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAECAAAAAACAAAAAAAAABgAAAQAAAEAAAA=</HashCode>
       <FileName>Licence.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="client_marieteam.MainWindow" BaseTypeListCollapsed="true">
-    <Position X="13.5" Y="0.75" Width="1.75" />
+    <Position X="12.75" Y="1" Width="2.25" />
     <TypeIdentifier>
       <HashCode>ABAAAAAAAAAAgAAAAAAAAEAAAEAAAAMAAAAAAAAAAAA=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Orientation="Left" Position="0.1" Collapsed="true" />
   </Class>
   <Class Name="client_marieteam.Bateau">
-    <Position X="7.25" Y="1.75" Width="1.5" />
+    <Position X="7.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAAAIAAAAAAAAACAAAAAAAAAAhA=</HashCode>
       <FileName>MarieTeam.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="client_marieteam.BateauVoyageur">
-    <Position X="9.5" Y="1.75" Width="1.5" />
+    <Position X="10.25" Y="1" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAAAAAAAEAAAAAAAAAAAAAAQAAAAAAAAEAAA=</HashCode>
       <FileName>MarieTeam.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="client_marieteam.Passerelle">
-    <Position X="11.5" Y="2" Width="1.5" />
+    <Position X="7" Y="4.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAIAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MarieTeam.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="client_marieteam.PDF">
-    <Position X="11.5" Y="3.75" Width="1.5" />
+    <Position X="12.75" Y="3.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAACAAAACAAAAAgABAAAAEAAIAA=</HashCode>
       <FileName>MarieTeam.cs</FileName>

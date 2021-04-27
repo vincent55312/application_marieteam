@@ -76,3 +76,4 @@ C:\Users\33756\Desktop\AppMarieTeam\TestsApp\obj\Debug\TestsApp.csproj.CoreCompi
 C:\Users\33756\Desktop\AppMarieTeam\TestsApp\obj\Debug\TestsApp.csproj.CopyComplete
 C:\Users\33756\Desktop\AppMarieTeam\TestsApp\obj\Debug\TestsApp.dll
 C:\Users\33756\Desktop\AppMarieTeam\TestsApp\obj\Debug\TestsApp.pdb
+C:\Users\33756\Desktop\AppMarieTeam\TestsApp\bin\Debug\Newtonsoft.Json.dll

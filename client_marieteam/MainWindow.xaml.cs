@@ -100,7 +100,14 @@ namespace client_marieteam
                 Passerelle Bateaux = new Passerelle();
                 while (rdr.Read())
                 {
-                    Bateaux.bateauVoyageurs.Add(new BateauVoyageur(rdr.GetInt32(0), rdr.GetString(1), rdr.GetFloat(2), rdr.GetFloat(3), rdr.GetString(4), rdr.GetFloat(5), Passerelle.chargerLesEquipements(rdr.GetString(6))));
+                    Bateaux.bateauVoyageurs.Add(new BateauVoyageur
+                        (rdr.GetInt32(0),
+                        rdr.GetString(1),
+                        rdr.GetFloat(2),
+                        rdr.GetFloat(3),
+                        rdr.GetString(4),
+                        rdr.GetFloat(5),
+                        Passerelle.chargerLesEquipements(rdr.GetString(6))));
                 }
                 client.CloseConnection();
                 foreach (var item in Bateaux.bateauVoyageurs) maintextbox.Text += item.ToString() + "#NEWPAGE\n";

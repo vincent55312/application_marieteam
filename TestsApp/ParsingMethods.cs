@@ -32,18 +32,16 @@ namespace TestsApp
 
         [TestMethod]
         [Theory]
-        [DataRow("#NEWPAGE", ",")]
+        [DataRow("#NEWPAGE", "")]
         [DataRow("#NEW PAGE", "")]
-        [DataRow("#NEWPAGE1", ",")]
-        [DataRow("5#NEWPAGE1", "5,")]
+        [DataRow("#NEWPAGE1", "")]
+        [DataRow("0#NEWPAGE1#NEWPAGE2#NEWPAGE", "012")]
         public void ParsingPageTest(string input, string expected)
         {
             List<string> list = PDF.ParsingPage(input);
             string res = "";
-            foreach (var item in list) res += item + ",";
+            foreach (var item in list) res += item;
             Assert.AreEqual(expected, res);
-
-
         }
 
         [TestMethod]
