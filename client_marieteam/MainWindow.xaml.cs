@@ -100,8 +100,8 @@ namespace client_marieteam
                 Passerelle Bateaux = new Passerelle();
                 while (rdr.Read())
                 {
-                    Bateaux.bateauVoyageurs.Add(new BateauVoyageur
-                        (rdr.GetInt32(0),
+                    Bateaux.bateauVoyageurs.Add(new BateauVoyageur(
+                        rdr.GetInt32(0),
                         rdr.GetString(1),
                         rdr.GetFloat(2),
                         rdr.GetFloat(3),

@@ -110,9 +110,9 @@ namespace client_marieteam
                 document.Save(output);
                 Process.Start(output);
             }
-            catch
+            catch(Exception e)
             {
-                MessageBox.Show("Erreur durant la génération du PDF");
+                MessageBox.Show(e.Message, "Erreur durant la génération du PDF");
             }
         }
 

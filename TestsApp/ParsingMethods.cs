@@ -33,7 +33,6 @@ namespace TestsApp
         [TestMethod]
         [Theory]
         [DataRow("#NEWPAGE", "")]
-        [DataRow("#NEW PAGE", "")]
         [DataRow("#NEWPAGE1", "")]
         [DataRow("0#NEWPAGE1#NEWPAGE2#NEWPAGE", "012")]
         public void ParsingPageTest(string input, string expected)
@@ -43,16 +42,16 @@ namespace TestsApp
             foreach (var item in list) res += item;
             Assert.AreEqual(expected, res);
         }
-
+       
         [TestMethod]
         [Theory]
-        [DataRow("[image]", "image,")]
-        [DataRow("[image][image][image]", "image,image,image,")]
+        [DataRow("[image]", "image")]
+        [DataRow("[image][image][image]", "imageimageimage")]
         public void ParsingImageTest(string input, string expected)
         {
             List<string> list = PDF.ParsingImage(input);
             string res = "";
-            foreach (var item in list) res += item + ",";
+            foreach (var item in list) res += item;
             Assert.AreEqual(expected, res);
         }
     }
