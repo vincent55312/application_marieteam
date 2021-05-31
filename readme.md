@@ -15,7 +15,7 @@
 * Tests unitaires
 
 # GitBook : 
-https://vincent-vuylsteker.gitbook.io/client-lourd-marieteam/
+https://client-lourd-marieteam.gitbook.io/client-lourd-marieteam/
 
 # Application : 
 ![alt text](https://github.com/vvuylsteker/application_marieteam/blob/master/image/2.PNG)
